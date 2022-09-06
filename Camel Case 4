@@ -1,0 +1,81 @@
+
+import java.util.Scanner;
+
+public class Teste {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+
+        while (scan.hasNextLine()) {
+            String input = scan.nextLine();
+
+            input = input.replace("()", "");
+            String[] vect = input.split(";");
+            String myString = vect[2];
+            String output = "";
+
+            switch (vect[1]) {
+            case "C":
+
+                if (vect[0].equalsIgnoreCase("C")) {
+                    String[] vectSeparado = myString.split(" ");
+                    for (String e : vectSeparado) {
+                        output += e.substring(0, 1).toUpperCase() + e.substring(1);
+                    }
+                } else {
+
+                    String[] vectSeparado = myString.split("(?=[A-Z][^A-Z])");
+                    for (String e : vectSeparado) {
+                        output += e.substring(0, 1).toLowerCase() + e.substring(1) + " ";
+                    }
+                }
+                System.out.println(output);
+                break;
+
+            case "M":
+
+                if (vect[0].equalsIgnoreCase("C")) {
+                    String[] vecMetodo = myString.split(" ");
+                    String output1 = vecMetodo[0].substring(0, 1).toLowerCase() + vecMetodo[0].substring(1);
+
+                    for (int i = 1; i < vecMetodo.length; i++) {
+                        output += vecMetodo[i].substring(0, 1).toUpperCase() + vecMetodo[i].substring(1);
+                    }
+                    output = output1 + output + "()";
+
+                } else {
+                    String[] vectSeparado = myString.split("(?=[A-Z][^A-Z])");
+
+                    for (String c : vectSeparado) {
+                        output += c.substring(0, 1).toLowerCase() + c.substring(1) + " ";
+                    }
+                }
+                System.out.println(output);
+                break;
+
+            case "V":
+
+                if (vect[0].equalsIgnoreCase("C")) {
+                    String[] vectSeparado = myString.split(" ");
+                    for (int i = 1; i < vectSeparado.length; i++) {
+                        output += vectSeparado[i].substring(0, 1).toUpperCase() + vectSeparado[i].substring(1);
+                    }
+                    output = vectSeparado[0] + output;
+                }
+
+                else {
+
+                    String[] vectSeparado = myString.split("(?=[A-Z][^A-Z])");
+                    for (String e : vectSeparado) {
+                        output += e.substring(0, 1).toLowerCase() + e.substring(1) + " ";
+                    }
+                }
+                System.out.println(output);
+                break;
+            }
+        }
+        scan.close();
+    }
+
+}
